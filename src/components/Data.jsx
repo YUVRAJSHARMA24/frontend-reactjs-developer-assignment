@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Cell } from "recharts";
 import { Table } from 'antd';
-// import 'antd/dist/antd.css';
 const Data = () => {
   const [data, setData] = useState([]);
 
@@ -10,14 +9,12 @@ const Data = () => {
     axios
       .get("https://jsonplaceholder.typicode.com/posts")
       .then((response) => {
-        // Filter posts with user ID 1
         const filteredData = response.data.filter((post) => post.userId === 1);
         setData(filteredData);
       })
       .catch((error) => console.error(error));
   }, []);
 
-  // Calculate the number of posts written by user ID 1
   const totalPosts = data.length;
 
   const dataForPieChart = [
